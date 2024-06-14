@@ -5,3 +5,5 @@ venv/
 venv/Lib/
 
 venv/Lib/site-packages/
+
+django_project\.env
