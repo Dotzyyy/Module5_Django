@@ -6,4 +6,4 @@ venv/Lib/
 
 venv/Lib/site-packages/
 
-django_project\.env
+django_project/.env
