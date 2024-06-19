@@ -1,8 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-  <h2>{{ privatemessage.subject }}</h2>
-  <p>From: {{ privatemessage.author }}</p>
-  <p>To: {{ privatemessage.recipient }}</p>
-  <p>Sent on: {{ privatemessage.timestamp }}</p>
-  <p>{{ privatemessage.content }}</p>
+  <h2>{{ message.subject }}</h2>
+  <p>From: {{ message.author }}</p>
+  <p>To: {{ message.recipient }}</p>
+  <p>Sent on: {{ message.timestamp }}</p>
+  <p>{{ message.content }}</p>
 {% endblock %}
