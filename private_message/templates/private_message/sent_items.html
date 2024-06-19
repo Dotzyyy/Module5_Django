@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'blog/base.html' %}
 {% block content %}
   <h2>Sent Messages</h2>
   <ul>
-    {% for message in messages %}
+    {% for privatemessage in privatemessages %}
       <li>
-        <a href="{% url 'view_item' message.pk %}">{{ message.subject }}</a>
-        to {{ message.recipient }} on {{ message.timestamp }}
+        <a href="{% url 'view_item' message.pk %}">{{ privatemessage.subject }}</a>
+        to {{ privatemessage.recipient }} on {{ privatemessage.timestamp }}
       </li>
     {% endfor %}
   </ul>

@@ -1,11 +1,14 @@
-{% extends 'base.html %}
+{% extends 'blog/base.html' %}
 {% block content %}
     <h2>My Inbox</h2>
     <ul>
-        {% for message in messages %}
+        {% for privatemessage in privatemessages %}
         <li>
-            from {{ message.sender }} {{ message.timestamp }}            
-            <a href="{% url 'view_item' message.pk %}">{{ message.subject }}</a>
+                       
+            <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
+                <br>
+                <span>From: {{ privatemessage.author.username }}</span>
+                <span class="timestamp">{{ privatemessage.timestamp }}</span>
         </li>
         {% endfor %}
     </ul>

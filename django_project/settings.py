@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
-    'private_message.apps.PrivateMessageConfig'
+    'private_message.apps.PrivateMessageConfig',
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.admin',

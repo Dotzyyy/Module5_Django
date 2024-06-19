@@ -10,16 +10,16 @@ def inbox(request):
 
 @login_required
 def sent_items(request):
-    messages = PrivateMessage.objects.filter(sender=request.user).order_by('-timestamp')
-    return render(request, 'messages_app/sent_items.html', {'messages': messages})
+    messages = PrivateMessage.objects.filter(author=request.user).order_by('-timestamp')
+    return render(request, 'private_message/sent_items.html', {'messages': messages})
 
 @login_required
-def view_item(request):
-    message = get_object_or_404(Message, pk=pk)
+def view_item(request, pk):
+    message = get_object_or_404(PrivateMessage, pk=pk)
     if message.recipient == request.user:
         message.is_read = True
         message.save()
-    return render(request, 'messages_app/view_item.html', {'message': message})
+    return render(request, 'private_message/view_item.html', {'message': message})
 
 @login_required
 def send_item(request):
@@ -27,8 +27,9 @@ def send_item(request):
         form = MessageForm(request.POST)
         if form.is_valid():
             message = form.save(commit=False)
-            message.send = request.user
+            message.author = request.user
             message.save() 
+            form.save_m2m()
             return redirect('inbox')
     else:
         form = MessageForm()
