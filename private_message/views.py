@@ -6,7 +6,13 @@ from .forms import MessageForm
 @login_required
 def inbox(request):
     privatemessages = PrivateMessage.objects.filter(recipient=request.user).order_by('-timestamp')
-    return render(request, 'private_message/inbox.html', {'privatemessages': privatemessages})
+    unread_messages = PrivateMessage.objects.filter(recipient=request.user, unread=True).count()
+
+    context = { 'privatemessages': privatemessages,
+                'unread_messages': unread_messages,
+    }
+    
+    return render(request, 'private_message/inbox.html', context)
 
 @login_required
 def sent_items(request):
@@ -18,7 +24,7 @@ def view_item(request, pk):
     privatemessage = get_object_or_404(PrivateMessage, pk=pk)
     print(privatemessage)
     if privatemessage.recipient == request.user:
-        privatemessage.is_read = True
+        privatemessage.unread = False
         privatemessage.save()
     return render(request, 'private_message/view_item.html', {'privatemessage': privatemessage})
 

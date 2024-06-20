@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 {% block content %}
 
 <h2>My Inbox</h2>
@@ -14,4 +15,26 @@
         </li>
         {% endfor %}
     </ul>
-{% endblock %}    
+{% endblock %}
+
+
+    <script>
+        var unreadMessages = {{ unread_messages|safe }};
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            if (unreadMessages > 0) {
+                showNotification('You have ' + unreadMessages + ' new messages.');
+            }
+        });
+
+        function showNotification(message) {
+            var notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+    </script>
