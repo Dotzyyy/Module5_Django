@@ -4,7 +4,7 @@
   <ul>
     {% for privatemessage in privatemessages %}
       <li>
-        <a href="{% url 'view_item' message.pk %}">{{ privatemessage.subject }}</a>
+        <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
         to {{ privatemessage.recipient }} on {{ privatemessage.timestamp }}
       </li>
     {% endfor %}
