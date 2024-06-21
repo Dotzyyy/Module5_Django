@@ -1,18 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from .models import PrivateMessage
 from .forms import MessageForm
 
 @login_required
 def inbox(request):
     privatemessages = PrivateMessage.objects.filter(recipient=request.user).order_by('-timestamp')
-    unread_messages = PrivateMessage.objects.filter(recipient=request.user, unread=True).count()
+    return render(request, 'private_message/inbox.html', {'privatemessages': privatemessages})
 
-    context = { 'privatemessages': privatemessages,
-                'unread_messages': unread_messages,
-    }
     
-    return render(request, 'private_message/inbox.html', context)
+    
+    
 
 @login_required
 def sent_items(request):
@@ -41,3 +40,8 @@ def send_item(request):
     else:
         form = MessageForm()
     return render(request, 'private_message/send_item.html', {'form': form})    
+
+@login_required
+def check_new_messages(request):
+    new_messages_count = PrivateMessage.objects.filter(recipient=request.user, unread=True).count()
+    return JsonResponse({'new_messages_count': new_messages_count})

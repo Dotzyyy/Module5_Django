@@ -1,10 +1,16 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+
+
 {% block content %}
 
 <h2>My Inbox</h2>
     
-    <ul>
+<div id="notification-container" style="display: none; background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; margin-bottom: 10px; border-radius: 5px;">
+        <p id="notification-message"></p>
+    </div>
+    <!-- <input type="hidden" id="Url" data-url="{% url 'myapp:productdetail' id %}" /> -->
+    <ul id="message-list" data-check-messages-url="{% url 'check_new_messages' %}">
         {% for privatemessage in privatemessages %}
         <li>
                        
@@ -15,26 +21,10 @@
         </li>
         {% endfor %}
     </ul>
+
+    
+    <script src="{% static 'private_message/js/notifications.js' %}"></script>
 {% endblock %}
 
 
-    <script>
-        var unreadMessages = {{ unread_messages|safe }};
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            if (unreadMessages > 0) {
-                showNotification('You have ' + unreadMessages + ' new messages.');
-            }
-        });
-
-        function showNotification(message) {
-            var notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-
-            setTimeout(function() {
-                notification.style.display = 'none';
-            }, 5000); // 5000 milliseconds = 5 seconds
-        }
-    </script>
+    

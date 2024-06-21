@@ -1,5 +1,5 @@
 body {
-    background: #fafafa;
+    background: #ffffff;
     color: #333333;
     margin-top: 5rem;
   }
@@ -82,3 +82,73 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+
+
+  /* About Page */
+
+  #faq-section {
+    
+    margin-top: 3rem;
+    margin-bottom: 15rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#faq-title {
+    font-size: 2.5rem;
+    margin: auto;
+}
+
+.faq {
+    cursor: pointer;
+    max-width: 45rem;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid grey;
+    
+
+}
+
+.question-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.question-title {
+    padding-top: 1.75rem;
+    line-height: 1.6;
+}
+
+
+.answer-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.4s ease;
+}
+
+
+
+.answer {
+  padding-top: 1.2rem;
+  font-size: 1rem ;
+  line-height: 1.6;
+}
+
+.faq.active .answer-container {
+  max-height: 20rem;
+  
+
+}
+
+.faq.active .question-container svg {
+  transform: rotate(180deg);
+}
+
+svg {
+  transition: transform 0.5s ease-in;
+}
