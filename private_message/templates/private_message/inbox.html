@@ -9,7 +9,7 @@
 <div id="notification-container" style="display: none; background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; margin-bottom: 10px; border-radius: 5px;">
         <p id="notification-message"></p>
     </div>
-    <!-- <input type="hidden" id="Url" data-url="{% url 'myapp:productdetail' id %}" /> -->
+    
     <ul id="message-list" data-check-messages-url="{% url 'check_new_messages' %}">
         {% for privatemessage in privatemessages %}
         <li>
