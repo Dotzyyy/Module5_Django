@@ -21,4 +21,4 @@ function checkForNewMessages() {
         });
 }
     
-setInterval(checkForNewMessages, 5000);  // Check for new messages every 5 seconds
+setInterval(checkForNewMessages, 1000);  // Check for new messages every 5 seconds

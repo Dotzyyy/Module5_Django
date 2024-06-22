@@ -5,15 +5,22 @@ body {
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+    color: #686868c8;
   }
   
   ul {
     margin: 0;
   }
   
+
+  /* Navbar */
+  .active {
+    
+    color: #ffffff;
+  }
+  
   .bg-steel {
-    background-color: #5f788a;
+    background-color: #084b7b;
   }
   
   .site-header .navbar-nav .nav-link {

@@ -3,27 +3,35 @@
 
 
 {% block content %}
-
-<h2>My Inbox</h2>
-    
-<div id="notification-container" style="display: none; background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; margin-bottom: 10px; border-radius: 5px;">
-        <p id="notification-message"></p>
+<div class="container mt-4">
+    <h2 class="mb-4">My Inbox</h2>
+        
+    <div id="notification-container" style="display: none; background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; margin-bottom: 10px; border-radius: 5px;">
+            <p id="notification-message"></p>
     </div>
     
-    <ul id="message-list" data-check-messages-url="{% url 'check_new_messages' %}">
-        {% for privatemessage in privatemessages %}
-        <li>
-                       
-            <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
-                <br>
-                <span>From: {{ privatemessage.author.username }}</span>
-                <span class="timestamp">{{ privatemessage.timestamp }}</span>
-        </li>
-        {% endfor %}
-    </ul>
-
     
-    <script src="{% static 'private_message/js/notifications.js' %}"></script>
+        
+    <ul id="message-list" class="list-group"  data-check-messages-url="{% url 'check_new_messages' %}">
+            {% for privatemessage in privatemessages %}
+            <li class="list-group-item list-group-item-light inbox-list-item">
+                <div class="d-flex justify-content-between align-items-center">     
+                    <div>
+                        <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
+                            <br>
+                            <span>From: {{ privatemessage.author.username }}</span>
+                            
+                    </div>
+                    <div class="text-muted">
+                        <span class="timestamp">{{ privatemessage.timestamp }}</span>
+                    </div>        
+                </div>        
+            </li>
+            {% endfor %}
+        </ul>
+</div>
+        
+        <script src="{% static 'private_message/js/notifications.js' %}"></script>
 {% endblock %}
 
 

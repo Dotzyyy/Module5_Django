@@ -1,12 +1,24 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-  <h2>Sent Messages</h2>
-  <ul>
+
+<div class="container mt-4">
+
+  <h2 class="mb-4">Sent Messages</h2>
+  <ul class="sent-message-list list-group" class="list-group">
     {% for privatemessage in privatemessages %}
-      <li>
-        <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
-        to {{ privatemessage.recipient }} on {{ privatemessage.timestamp }}
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
+            <br>
+            <span> To: {{ privatemessage.recipient }} </span>
+          </div>
+          <div class="text-muted">
+           <span class="timestamp">{{ privatemessage.timestamp }} </span>
+          </div>  
+        </div>
       </li>
     {% endfor %}
   </ul>
-{% endblock %}
+</div>
+  {% endblock %}

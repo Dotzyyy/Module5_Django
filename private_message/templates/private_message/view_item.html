@@ -1,8 +1,21 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-  <h2>{{ privatemessage.subject }}</h2>
-  <p>From: {{ privatemessage.author.username }}</p>
-  <p>To: {{ privatemessage.recipient.username }}</p>
-  <p>Sent on: {{ privatemessage.timestamp }}</p>
-  <p>{{ privatemessage.content }}</p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card mt-4">
+              <div class="card-header">
+                  <h2 class="card-title">{{ privatemessage.subject }}</h2>
+              </div>
+              <div class="card-body">
+                  <p><strong>From:</strong> {{ privatemessage.author.username }}</p>
+                  <p><strong>To:</strong> {{ privatemessage.recipient.username }}</p>
+                  <p><strong>Sent on:</strong> <span class="text-muted">{{ privatemessage.timestamp }}</span></p>
+                  <hr>
+                  <p>{{ privatemessage.content }}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 {% endblock %}

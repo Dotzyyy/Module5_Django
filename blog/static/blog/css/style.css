@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 body {
     background: #ffffff;
     color: #333333;
@@ -5,15 +7,22 @@ body {
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+    color: #686868c8;
   }
   
   ul {
     margin: 0;
   }
   
+
+  /* Navbar */
+  .active {
+    
+    color: #ffffff;
+  }
+  
   .bg-steel {
-    background-color: #5f788a;
+    background-color: #084b7b;
   }
   
   .site-header .navbar-nav .nav-link {
@@ -151,4 +160,28 @@ body {
 
 svg {
   transition: transform 0.5s ease-in;
+}
+
+/* Inbox */
+
+#notification-container {
+  margin-bottom: 1rem;
+}
+
+#message-list {
+  margin-top: 1rem;
+}
+
+.inbox-list-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#message-list > .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+#message-list > .text-muted {
+  font-size: 0.9rem;
 }
