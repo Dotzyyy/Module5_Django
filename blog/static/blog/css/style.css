@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+
 body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background: #ffffff;
     color: #333333;
     margin-top: 5rem;
@@ -16,9 +18,9 @@ body {
   
 
   /* Navbar */
-  .active {
+  .nav-active {
     
-    color: #ffffff;
+    font-weight: bold;
   }
   
   .bg-steel {
@@ -36,6 +38,8 @@ body {
   .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
   }
+
+  /* Main */
   
   .content-section {
     background: #ffffff;
@@ -46,12 +50,13 @@ body {
   }
   
   .article-title {
-    color: #444444;
+    color: #5912d3;
+    text-decoration: none;
   }
   
   a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
+    color: #00bdcbcf;
+    
   }
   
   .article-content {
@@ -92,10 +97,15 @@ body {
     font-size: 2.5rem;
   }
 
+  .current-status {
+    font-weight: bold;
+  }
+
   /* Side Navbar */
 
   .side-list-item {
     list-style-type: none;
+    
     
   }
 

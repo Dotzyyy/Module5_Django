@@ -1,24 +1,38 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
+
 {% block content %}
-
 <div class="container mt-4">
-
-  <h2 class="mb-4">Sent Messages</h2>
-  <ul class="sent-message-list list-group" class="list-group">
-    {% for privatemessage in privatemessages %}
-      <li class="list-group-item">
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
-            <br>
-            <span> To: {{ privatemessage.recipient }} </span>
-          </div>
-          <div class="text-muted">
-           <span class="timestamp">{{ privatemessage.timestamp }} </span>
-          </div>  
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
+    <h2 class="mb-4">Sent Items</h2>
+        
+    
+    
+    
+        
+    <ul id="message-list" class="list-group"">
+            {% for privatemessage in privatemessages %}
+            <li class="list-group-item list-group-item-light inbox-list-item">
+                <div class="d-flex justify-content-between align-items-center">     
+                    <div>
+                        <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
+                            <br>
+                            <span>To: {{ privatemessage.recipient.username }}</span>
+                            
+                    </div>
+                    <div class="text-muted">
+                        <span class="timestamp">{{ privatemessage.timestamp }}</span>
+                    </div>
+                    <div>
+                        <a href="{% url 'archive_message' privatemessage.pk %}" class="btn btn-sm btn-secondary">Archive</a>
+                        <a href="{% url 'item_confirm_delete' privatemessage.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                    </div>        
+                </div>        
+            </li>
+            {% endfor %}
+        </ul>
 </div>
-  {% endblock %}
+        
+      
+        
+{% endblock %}
