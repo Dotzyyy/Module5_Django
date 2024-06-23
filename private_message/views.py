@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import JsonResponse
 from .models import PrivateMessage
 from .forms import MessageForm
@@ -9,6 +10,40 @@ def inbox(request):
     privatemessages = PrivateMessage.objects.filter(recipient=request.user).order_by('-timestamp')
     return render(request, 'private_message/inbox.html', {'privatemessages': privatemessages})
 
+@login_required
+def archive(request):
+    privatemessages = PrivateMessage.objects.filter(recipient=request.user, archived=True)
+    return render(request, 'private_message/archive.html', {'privatemessages': privatemessages})
+
+@login_required
+def delete_message(request, pk):
+    privatemessage = get_object_or_404(PrivateMessage, pk=pk, recipient=request.user)
+    if request.method == 'POST':
+        privatemessage.delete()
+        messages.success(request, f'Message "{privatemessage.subject}" deleted successfully!')
+        return redirect('inbox')
+    return redirect('inbox')  
+
+@login_required
+def item_confirm_delete(request, pk):
+    privatemessage = get_object_or_404(PrivateMessage, pk=pk, recipient=request.user)
+    return render(request, 'private_message/item_confirm_delete.html', {'privatemessage': privatemessage})
+
+@login_required
+def archive_message(request, pk):
+    privatemessage = get_object_or_404(PrivateMessage, pk=pk, recipient=request.user)
+    privatemessage.archived = True
+    privatemessage.save()
+    messages.success(request, f'Message "{privatemessage.subject}" archived successfully!')
+    return redirect('inbox')
+
+@login_required
+def unarchive_message(request, pk):
+    privatemessage = get_object_or_404(PrivateMessage, pk=pk, recipient=request.user)
+    privatemessage.archived = False
+    privatemessage.save()
+    messages.success(request, f'Message "{privatemessage.subject}" unarchived successfully!')
+    return redirect('archive')
     
     
     

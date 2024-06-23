@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">My Inbox</h2>
+    <h2 class="mb-4">My Archived Messages</h2>
         
     <div id="notification-container">
             <p id="notification-message"></p>
@@ -26,7 +26,7 @@
                         <span class="timestamp">{{ privatemessage.timestamp }}</span>
                     </div>
                     <div>
-                        <a href="{% url 'archive_message' privatemessage.pk %}" class="btn btn-sm btn-secondary">Archive</a>
+                        <a href="{% url 'unarchive_message' privatemessage.pk %}" class="btn btn-sm btn-warning">Remove</a>
                         <a href="{% url 'item_confirm_delete' privatemessage.pk %}" class="btn btn-sm btn-danger">Delete</a>
                     </div>        
                 </div>        
@@ -35,9 +35,5 @@
         </ul>
 </div>
         
-        <script src="{% static 'private_message/js/notifications.js' %}"></script>
         
 {% endblock %}
-
-
-    

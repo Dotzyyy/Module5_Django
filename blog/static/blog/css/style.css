@@ -92,6 +92,13 @@ body {
     font-size: 2.5rem;
   }
 
+  /* Side Navbar */
+
+  .side-list-item {
+    list-style-type: none;
+    
+  }
+
 
   /* About Page */
 
@@ -165,11 +172,18 @@ svg {
 /* Inbox */
 
 #notification-container {
-  margin-bottom: 1rem;
+  
+  display: none; 
+  background-color: #e2f8d7; 
+  color: #721c24; 
+  padding: 0.75rem; 
+  border: 1px solid #c8f5c6be; 
+  margin-bottom: .7rem; 
+  border-radius: 5px;
 }
 
 #message-list {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .inbox-list-item {

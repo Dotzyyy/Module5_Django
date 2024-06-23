@@ -1,7 +1,7 @@
 
 
 
-function showNotification(message) {
+function newMessages(message) {
     const notificationContainer = document.getElementById('notification-container');
     const notificationMessage = document.getElementById('notification-message');
     notificationMessage.textContent = message;
@@ -16,9 +16,11 @@ function checkForNewMessages() {
         .then(response => response.json())
         .then(data => {
             if (data.new_messages_count > 0) {
-                showNotification(`You have ${data.new_messages_count} new message(s)!`);
+                newMessages(`You have ${data.new_messages_count} new message(s)!`);
             }
         });
 }
     
 setInterval(checkForNewMessages, 1000);  // Check for new messages every 5 seconds
+
+
