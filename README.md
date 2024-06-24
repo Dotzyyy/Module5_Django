@@ -61,10 +61,14 @@ Featured Technologies:
 
 
 
+
+
 ### Current Problems and Future Updates.
 
 Maybe not so much an update but I had a problem displaying images when I deployed the website the render or deployed it locally with DEBUG off. 
 When I checked the devconsole and debug files it returned a 404 error. I tried everything from the reconfiguring the media and static files to changing the urls in the templates. I eventually went and decided to creat an AWS account and use the S3 service to host the images externally. While it solves the problem now, it would not do for a larger website as the AWS is a paid service. The problem occured to me to late in development to ask during the Saturday coding sessions.
+
+Email reset function has been tempremental, it works locally with debug mode on and off but not always when I deploy to render. Gmail is flagging my site as untrusworthy so I have put in a request with google to unblock it. Have yet to hear back
 
 ## How to run the database on render
 
