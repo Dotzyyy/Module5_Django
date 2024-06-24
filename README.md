@@ -4,7 +4,7 @@ Flask Blog 2
 Render Url: https://module5-django.onrender.com
 Github Url: https://github.com/Dotzyyy/Module5_Django
 Super User: username: superadmin
-           password: superpassword1234
+            password: superpassword1234
 
 ## Concept
 
@@ -52,7 +52,9 @@ Featured Technologies:
 
 * Areas to view received and sent messages, with the option to archive or delete said items.
 
-*
+* Feeback on successful deletions and archiving of messages.
+
+* Live updates in the message inbox for new messages and visual prompts for which are the unread messages.
 
 
 
