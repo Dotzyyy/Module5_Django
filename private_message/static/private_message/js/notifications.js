@@ -1,5 +1,5 @@
 
-
+// Fetches the notification box and the message line
 
 function newMessages(message) {
     const notificationContainer = document.getElementById('notification-container');
@@ -11,6 +11,7 @@ function newMessages(message) {
 const messageList = document.getElementById('message-list');
 const checkMessagesUrl = messageList.getAttribute('data-check-messages-url');
 
+// checks whether there are messages with 'unread=True'
 function checkForNewMessages() {
     fetch(checkMessagesUrl)
         .then(response => response.json())
@@ -21,6 +22,6 @@ function checkForNewMessages() {
         });
 }
     
-setInterval(checkForNewMessages, 1000);  // Check for new messages every 5 seconds
+setInterval(checkForNewMessages, 3000);  // runs the check code every 3 seconds
 
 

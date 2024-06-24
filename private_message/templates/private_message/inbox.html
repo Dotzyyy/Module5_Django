@@ -3,18 +3,18 @@
 
 
 {% block content %}
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
     <h2 class="mb-4">My Inbox</h2>
         
     <div id="notification-container">
             <p id="notification-message"></p>
     </div>
     
-    
+    <!-- Holds all of the messages sent here by other users -->
         
     <ul id="message-list" class="list-group"  data-check-messages-url="{% url 'check_new_messages' %}">
             {% for privatemessage in privatemessages %}
-            <li class="list-group-item list-group-item-light inbox-list-item">
+            <li class="inbox-list-item list-group-item" data-unread="{{ privatemessage.unread }}">
                 <div class="d-flex justify-content-between align-items-center">     
                     <div>
                         <a href="{% url 'view_item' privatemessage.pk %}">{{ privatemessage.subject }}</a>
@@ -23,7 +23,7 @@
                             
                     </div>
                     <div class="text-muted">
-                        <span class="timestamp">{{ privatemessage.timestamp }}</span>
+                        <span class="timestamp">{{ privatemessage.timestamp|date:"dS F, Y, h:ia" }}</span>
                     </div>
                     <div>
                         <a href="{% url 'archive_message' privatemessage.pk %}" class="btn btn-sm btn-secondary">Archive</a>
@@ -36,6 +36,7 @@
 </div>
         
         <script src="{% static 'private_message/js/notifications.js' %}"></script>
+        <script src="{% static 'private_message/js/unread.js' %}"></script>
         
 {% endblock %}
 

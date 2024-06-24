@@ -8,7 +8,7 @@
         
     
     
-    
+    <!-- List of sent emails to other users -->
         
     <ul id="message-list" class="list-group"">
             {% for privatemessage in privatemessages %}
@@ -21,7 +21,7 @@
                             
                     </div>
                     <div class="text-muted">
-                        <span class="timestamp">{{ privatemessage.timestamp }}</span>
+                        <span class="timestamp">{{ privatemessage.timestamp|date:"dS F, Y, h:ia" }}</span>
                     </div>
                     <div>
                         <a href="{% url 'archive_message' privatemessage.pk %}" class="btn btn-sm btn-secondary">Archive</a>

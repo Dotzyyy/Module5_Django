@@ -1,5 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+
+<!-- View when inspecting a message item-->
+
 <div class="container">
   <div class="row">
       <div class="col-md-12">
@@ -10,7 +13,7 @@
               <div class="card-body">
                   <p><strong>From:</strong> {{ privatemessage.author.username }}</p>
                   <p><strong>To:</strong> {{ privatemessage.recipient.username }}</p>
-                  <p><strong>Sent on:</strong> <span class="text-muted">{{ privatemessage.timestamp }}</span></p>
+                  <p><strong>Sent on:</strong> <span class="text-muted">{{ privatemessage.timestamp|date:"dS F, Y, h:ia" }}</span></p>
                   <hr>
                   <p>{{ privatemessage.content }}</p>
               </div>
