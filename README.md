@@ -173,3 +173,8 @@ On the following form, ensure that:
 
 Use the provided Url to access the website!:
     https://module5-django.onrender.com
+
+### Step 8:
+
+You can use your own gmail to test out password reset just make sure 2fa is enabled and you generate an app password for render.
+Place them under EMAIL_USER and EMAIL_PASS respectively.
